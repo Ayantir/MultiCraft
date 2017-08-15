@@ -242,8 +242,7 @@ local function ResetSpinner()
 		-- 3rd tab, deconstruction
 		elseif mode == SMITHING_MODE_DECONSTRUCTION then
 			if selectedCraft:IsDeconstructable() then
-				-- Count how many Items we got in craftingInventory
-				numCraftable = SMITHING.deconstructionPanel.extractionSlot.craftingInventory.itemCounts[SMITHING.deconstructionPanel.extractionSlot.itemInstanceId]
+				numCraftable = 1
 			else
 				numCraftable = 0
 			end
