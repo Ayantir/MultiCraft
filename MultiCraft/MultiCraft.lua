@@ -133,6 +133,7 @@ local function ResetSpinner()
 	
 	-- Get qty craftable
 	-- For Provisionner
+
 	if selectedCraft == provisioner then
 		if selectedCraft:IsCraftable() then
 			local data = PROVISIONER.recipeTree:GetSelectedData()
@@ -248,7 +249,7 @@ local function ResetSpinner()
 			end
 		end
 	end
-	
+		
 	-- Protection against divisions
 	numCraftable = zo_floor(numCraftable)
 	
@@ -390,14 +391,11 @@ end
 local function OverrideProvisionner()
 
 	-- Provisioner
-	provisioner.RefreshRecipeList = PROVISIONER.RefreshRecipeList
-	PROVISIONER.RefreshRecipeList = function(...)
-		provisioner.RefreshRecipeList(...)
+	ZO_PreHook(PROVISIONER, "RefreshRecipeList", function()
 		SetSelectedCraftAndMode()
 		ResetSpinner()
-	end
-	
-	ZO_PreHook(PROVISIONER, "RefreshRecipeDetails", ResetSpinner) -- Private function inside it
+	end) -- Private function inside it
+	ZO_PreHook(PROVISIONER, "RefreshRecipeDetails", ResetSpinner) -- same
 	
 	-- Create function
 	provisioner.Create = function()

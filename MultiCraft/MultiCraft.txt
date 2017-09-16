@@ -7,7 +7,7 @@
 ## Title: MultiCraft
 ## Description: Allows crafting of multiple items with one click
 ## Author: Ayantir & DonutEnigma
-## Version: 13
+## Version: 13.1
 ## APIVersion: 100020
 
 MultiCraft.lua
